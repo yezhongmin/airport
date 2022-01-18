@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>防疫溯源平台</title>
+    <link href="css/index.css" rel="stylesheet">
+    <link href="lib/layui-v2.5.5/css/layui.css" rel="stylesheet">
+    <script type="text/javascript" src="lib/layui-v2.5.5/layui.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/Ajax.js"></script>
+    <script type="text/javascript" src="lib/echarts/echarts.js"></script>
+    <script type="text/javascript" src="lib/echarts/westeros-json.js"></script>
+    <script type="text/javascript" src="dhWebSdk/wfs.js" ></script>
+    <script type="text/javascript" src="dhWebSdk/dhsdk.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+<body>
+    <div id="changeUpdateModel"></div>
+    <img src="image/bgimg.png"/>
+    <div id="top">
+        <div id="top-logo"></div>
+        <div id="top-navs0"></div>
+        <div id="top-navs1"></div>
+    </div>
+    <div id="left">
+        <div id="left-item0">
+            <div class="item-update" columnName="leftitem0">修改</div>
+            <div class="item-title" id="left-item0-title"></div>
+            <div class="item-content" id="left-item0-content"></div>
+        </div>
+        <div id="left-item1">
+            <div class="item-update" columnName="leftitem1">修改</div>
+            <div class="item-title" id="left-item1-title"></div>
+            <div class="item-content">
+                <div id="left-item1-echarts-item" style="font-size: 13px;"></div>
+                <div id="left-item1-echarts" style="width:564px;height:150px;top:-15px;left:-30px;"></div>
+            </div>
+        </div>
+        <div id="left-item2">
+            <div class="item-update" columnName="leftitem2">修改</div>
+            <div class="item-title" id="left-item2-title"></div>
+            <div class="item-content">
+                <div id="left-item2-echarts" style="width:528px;height:460px;top:-15px;left:0px;"></div>
+            </div>
+        </div>
+    </div>
+    <div id="middle">
+        <div id="middle-top-item">
+            <!--<div class="item-update" columnName="map">修改</div>-->
+            <div onclick="Page.openDevicePanel('988323', '入境旅客分流大厅6');" style="position: absolute;width:20px;height:20px;border:1px solid red;top:323px;left:325px;z-index: 1;"></div>
+            <div onclick="Page.openDevicePanel('988300', '入境旅客分流大厅三明海沧');" style="position: absolute;width:20px;height:20px;border:1px solid red;top:353px;left:400px;z-index: 1;"></div>
+            <div onclick="Page.openDevicePanel('988268', '涉疫垃圾存储间');" style="position: absolute;width:20px;height:20px;border:1px solid red;top:433px;left:370px;z-index: 1;"></div>
+            <img id="middleimg" src="image/map.png" style="position: absolute;top: 150px;">
+        </div>
+        <div id="middle-bottom-item0">
+            <div class="item-update" columnName="middleitem0">修改</div>
+            <div class="item-title" id="middle-item0-title"></div>
+            <div class="item-content">
+                <div id="middle-item0-echarts"></div>
+            </div>
+        </div>
+        <div id="middle-bottom-item1">
+            <div class="item-update" columnName="middleitem1">修改</div>
+            <div class="item-title" id="middle-item1-title"></div>
+            <div class="item-content">
+                <div id="middle-item1-echarts"></div>
+            </div>
+        </div>
+        <div id="middle-bottom-item2">
+            <div class="item-update" columnName="middleitem2">修改</div>
+            <div class="item-title" id="middle-item2-title"></div>
+            <div class="item-content">
+                <div id="middle-item2-echarts"></div>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="right-item0">
+            <div class="item-update" columnName="rightitem0">修改</div>
+            <div class="item-title" id="right-item0-title"></div>
+            <div class="item-content">
+                <div id="right-item0-echarts"></div>
+            </div>
+        </div>
+        <div id="right-item1">
+            <div class="item-update" columnName="rightitem1">修改</div>
+            <div class="item-title" id="right-item1-title"></div>
+            <div class="item-content">
+                <div id="right-item1-echarts-item" style="font-size: 13px;"></div>
+                <div id="right-item1-echarts" style="width:564px;height:150px;top:-15px;left:-30px;"></div>
+            </div>
+        </div>
+        <div id="right-item2">
+            <div class="item-update" columnName="rightitem2">修改</div>
+            <div class="item-title" id="right-item2-title"></div>
+            <div class="item-content">
+                <div id="right-item2-echarts" style="width: 558px; position: absolute;top: 60px;left: 77px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-form" id="leftitem0Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="leftitem0Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+            <tr>
+                <td class="tdkey">标题</td>
+                <td class="tdvalue">
+                    <input type="text" id="leftitem0Title" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdkey">内容</td>
+                <td class="tdvalue">
+                    <textarea id="leftitem0Content" class="layui-textarea" style="width: 100%;height: 300px;"></textarea>
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="leftitem1Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="leftitem1Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+                <tr>
+                    <td class="tdkey">标题</td>
+                    <td class="tdvalue" colspan="3">
+                        <input type="text" id="leftitem1Title" autocomplete="off" class="layui-input">
+                    </td>
+                </tr>
+                <tr>
+                    <td>显示名称</td>
+                    <td>数值</td>
+                    <td>排序</td>
+                    <td>是否显示</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="leftitem2Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="leftitem2Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+            <tr>
+                <td class="tdkey">标题</td>
+                <td class="tdvalue" colspan="3">
+                    <input type="text" id="leftitem2Title" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td>显示名称</td>
+                <td>数值</td>
+                <td>排序</td>
+                <td>是否显示</td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="middleitem0Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="middleitem0Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+            <tr>
+                <td class="tdkey">标题</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem0Title" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdkey">数量</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem0Num" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdkey">单位</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem0Unit" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="middleitem1Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="middleitem1Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+            <tr>
+                <td class="tdkey">标题</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem1Title" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdkey">数量</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem1Num" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdkey">单位</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem1Unit" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="middleitem2Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="middleitem2Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+            <tr>
+                <td class="tdkey">标题</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem2Title" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdkey">数量</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem2Num" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td class="tdkey">单位</td>
+                <td class="tdvalue">
+                    <input type="text" id="middleitem2Unit" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="rightitem0Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="rightitem0Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+            <tr>
+                <td class="tdkey">标题</td>
+                <td class="tdvalue" colspan="3">
+                    <input type="text" id="rightitem0Title" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td>显示名称</td>
+                <td>数值</td>
+                <td>排序</td>
+                <td>是否显示</td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="rightitem1Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="rightitem1Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+            <tr>
+                <td class="tdkey">标题</td>
+                <td class="tdvalue" colspan="3">
+                    <input type="text" id="rightitem1Title" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td>显示名称</td>
+                <td>数值</td>
+                <td>排序</td>
+                <td>是否显示</td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="rightitem2Panel" style="display:none;width:1300px;margin:10px auto;">
+        <table id="rightitem2Table" class="layui-table" style="width:1300px;table-layout:fixed;">
+            <thead>
+            <tr>
+                <td class="tdkey">标题</td>
+                <td class="tdvalue" colspan="3">
+                    <input type="text" id="rightitem2Title" autocomplete="off" class="layui-input">
+                </td>
+            </tr>
+            <tr>
+                <td>显示名称</td>
+                <td>数值</td>
+                <td>排序</td>
+                <td>是否显示</td>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="layui-form" id="mapPanel" style="display:none;width:1300px;margin:10px auto;">
+        <div style="height: 720px;"></div>
+        <div id="mapdiv" style="position: absolute;height:720px;top:10px;left:10px;">
+            <img id="middleitemmap" src="image/map.png" style="border:1px solid #eee;" onclick="MouseClick.handleClick(event)">
+        </div>
+        <div>
+
+        </div>
+    </div>
+
+    <!-- 校验进入编辑模式 -->
+    <div class="layui-form" id="passwordPanel" style="display:none;width:600px;margin:10px auto;">
+        <div class="layui-form-item">
+            <label class="layui-form-label">校验码</label>
+            <div class="layui-input-block">
+                <input type="password" id="update_password" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" id="submitPassword">校验码认证</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

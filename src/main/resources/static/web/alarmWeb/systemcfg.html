@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="./layui/css/layui.css" media="all"/>
+	<link rel="stylesheet" href="./css/systemcfg.css" media="all" />
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="js/vector.js"></script>
+	<script type="text/javascript" src="dhWebSdk/dhsdk.min.js"></script> 
+	<script type="text/javascript" src="dhWebSdk/wfs.js" ></script>  
+	<link rel="stylesheet" href="jstree/dist/themes/default/style.min.css" />
+	<script src="jstree/dist/jstree.min.js"></script>
+<style>
+
+</style>
+<body class="main_body">
+	<div class="layui-header header">
+		<div class="layui-layout layui-layout-admin">
+			<a href="#" class="logo">云坐席配置</a>
+			<a  href="javascript:;" class="logout"><i class="seraph icon-tuichu"></i><cite>退出</cite></a>
+		</div>
+	</div>
+	<div class="layui-tab">
+	  <ul class="layui-tab-title">
+		<li class="layui-this">设备配置</li>
+		<li>用户配置</li>
+		<li>分组配置</li>
+	  </ul>
+	  <div class="layui-tab-content">
+		<div class="layui-tab-item layui-show">
+			<div class="count">
+				<b>在线：</b><span class="onlineCount">0</span>
+				<b>离线：</b><span class="offlineCount">0</span>
+			</div>
+			<div class="search">
+				<input type="text" class="layui-input"  id="search_input" maxlength="32" placeholder="请输入信息搜索" />
+			</div>
+			<div class="tree" id="devicetree">
+			</div>
+			<div class="maincontent">
+			<div class="groupMain">
+				<form class="layui-form">
+					 <div class="layui-form-item">
+						<label class="layui-form-label">设备序列号</label>
+						<div class="layui-input-block">
+							 <input type="text"  required  lay-verify="required|name" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" autocomplete="off" maxlength="32" disabled class="layui-input layui-disabled deviceId">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">设备名称</label>
+						<div class="layui-input-block">
+							 <input type="text"  required  lay-verify="required|name" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" autocomplete="off" maxlength="32" class="layui-input deviceName">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">设备联系人</label>
+						<div class="layui-input-block">
+							 <input type="text" autocomplete="off" lay-verify="name" maxlength="32" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')"  class="layui-input deviceContact">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">联系人电话</label>
+						<div class="layui-input-block">
+							 <input type="text" autocomplete="off" lay-verify="number" maxlength="32" oninput="value=value.replace(/[^0-9]/g,'')" class="layui-input devicePhone">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<div class="layui-input-block opeBtn">
+							<a class="layui-btn layui-btn-warm editDevice" lay-filter="editDevice" lay-submit>修改设备</a>
+							<a class="layui-btn moveDevice" lay-filter="moveDevice" >移动设备</a>
+							<a class="layui-btn setPush" lay-filter="setPush" >消息推送设置</a>
+						</div>
+					 </div>
+				</form>
+			</div>
+			<fieldset class="layui-elem-field">
+				<legend>说明</legend>
+				<div class="layui-field-box">
+					<span>1.左侧列表选中设备，右侧可以修改设备信息；</span><br>
+					<span>2.移动设备：</span><br>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;1)左侧列表选中对讲设备，右侧点”击移动设备“选择分组移动；</span><br>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;2)或左侧列表选中对讲设备-->鼠标右键移动设备-->列表中选择分组右键粘贴设备。</span><br>
+					<span>3.输入框只能输入中文、字母和数字。电话只能输入数字</span>
+				</div>
+			</fieldset>				  
+			</div>
+		</div>
+		
+		<div class="layui-tab-item">
+			<div class="tree" id="usertree">
+			</div>
+			<div class="maincontent">
+			<div class="groupMain">
+				<form class="layui-form">
+					<input class="userId" type="hidden" value="">
+					 <div class="layui-form-item">
+						<label class="layui-form-label">用户名称</label>
+						<div class="layui-input-block">
+							 <input type="text" placeholder="请输入用户名称" lay-verify="name" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" autocomplete="off" maxlength="32" class="layui-input userName">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">用户密码</label>
+						<div class="layui-input-block">
+							 <input type="password" placeholder="请输入用户密码" lay-verify="name" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" autocomplete="off" maxlength="32" class="layui-input password">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">确认密码</label>
+						<div class="layui-input-block">
+							 <input type="password" placeholder="请再次输入密码" lay-verify="name" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" autocomplete="off" maxlength="32" class="layui-input verifyPwd">
+						</div>
+					</div>
+					
+					<div class="layui-form-item">
+						<div class="layui-input-block opeBtn">
+						  <a class="layui-btn addUser" lay-filter="addUser" lay-submit>添加用户</a>
+						  <a class="layui-btn layui-btn-warm editPwd" lay-filter="editPwd" lay-submit>修改密码</a>
+						  <a class="layui-btn layui-btn-danger delUser" lay-filter="delUser">删除用户</a>
+						</div>
+					 </div>
+				</form>
+				<div class="layui-input-block authorizeDiv">
+				  <button type="layui-btn" class="layui-btn authorizeGroup">授权分组</button>
+				</div>
+			</div>
+			<fieldset class="layui-elem-field">
+				<legend>说明</legend>
+				<div class="layui-field-box">
+					<span>1.左侧列表选中"远程账号"，右侧输入账号信息添加；</span><br>
+					<span>2.左侧列表选中用户账号，右侧可以进行用户密码修改、用户删除和授权用户分组。</span><br>
+					<span>3.输入框只能输入中文、字母和数字。</span>
+				</div>
+			</fieldset>				  
+			</div>
+		</div>
+		
+		<div class="layui-tab-item">
+			<div class="tree" id="grouptree">
+			</div>
+			<div class="maincontent">
+			<div class="groupMain">
+				<form class="layui-form" >
+					<input class="groupId" type="hidden" value="">
+					 <div class="layui-form-item">
+						<label class="layui-form-label">分组类型</label>
+						<div class="layui-input-block groupType">
+							<input type="radio" name="group" value="normal" title="普通分组" checked>
+							<input type="radio" name="group" value="linkage" title="联动分组">
+							<input type="radio" name="group" value="defense" title="联防分组">
+						</div>
+					</div>
+					 <div class="layui-form-item">
+						<label class="layui-form-label">分组名称</label>
+						<div class="layui-input-block">
+							 <input type="text" required lay-verify="required|name" placeholder="请输入分组名称" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" autocomplete="off"  maxlength="32" class="layui-input groupName" >
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">分组联系人</label>
+						<div class="layui-input-block">
+							 <input type="text"  placeholder="请输入分组联系人" lay-verify="name" oninput="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5]/g,'')" autocomplete="off" maxlength="32" class="layui-input groupContact">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">联系人电话</label>
+						<div class="layui-input-block">
+							 <input type="text" placeholder="请输入联系人电话" lay-verify="number" oninput="value=value.replace(/[^0-9]/g,'')" autocomplete="off" maxlength="32" class="layui-input groupPhone">
+						</div>
+					</div>
+					
+					<div class="layui-form-item">
+						<div class="layui-input-block layui-center opeBtn">
+						  <a class="layui-btn addGroup" lay-submit lay-filter="addGroup">添加分组</a>
+						  <a class="layui-btn layui-btn-warm updateGroup" lay-submit lay-filter="updateGroup">修改分组</a>
+						  <a class="layui-btn layui-btn-danger delGroup" lay-filter="delGroup">删除分组</a>
+						</div>
+					 </div>
+					
+				</form>
+			</div>
+			<fieldset class="layui-elem-field">
+				<legend>说明</legend>
+				<div class="layui-field-box">
+					<span>1.左侧列表选中顶级分组，右侧输入分组信息添加分组；</span><br>
+					<span>2.左侧列表选中分组，右侧进行分组修改或删除操作。</span><br>
+					<span>3.输入框只能输入中文、字母和数字。电话只能输入数字</span>
+				</div>
+			</fieldset>	  
+			</div>
+		</div>
+	  </div>
+	</div>
+	<div class="pushSetting" style="display: none;">
+		<form class="layui-form">
+			<fieldset class="layui-elem-field">
+				<div class="layui-field-box">
+					<div class="layui-form-item">
+						<label class="layui-form-label">推送接收url</label>
+						<div class="layui-input-block">
+							<input type="text"  required  lay-verify="required" autocomplete="off" maxlength="256" class="layui-input pushUrl">
+						</div>
+					</div>
+					<div class="layui-form-item">
+						<label class="layui-form-label">用户数据</label>
+						<div class="layui-input-block">
+							<input type="text"  required  lay-verify="required"  autocomplete="off" maxlength="256" class="layui-input context">
+						</div>
+					</div>
+				</div>
+			</fieldset>	
+			<fieldset class="layui-elem-field">
+				<div class="layui-field-box">
+					<div class="layui-form-item">
+						<div class="layui-input-block">
+							<input type="checkbox" class="isAuth" lay-filter="isAuth" title="需要认证" lay-skin="primary">
+						</div>
+					</div>
+					<div class="layui-form-item layui-disabled showAuthInfo">
+						<label class="layui-form-label">用户名</label>
+						<div class="layui-input-block">
+							<input type="text" autocomplete="off" maxlength="32" disabled class="layui-input authUname">
+						</div>
+					</div>
+					<div class="layui-form-item layui-disabled showAuthInfo">
+						<label class="layui-form-label">密码</label>
+						<div class="layui-input-block">
+							<input type="password" autocomplete="off" maxlength="32" disabled  class="layui-input authUpwd">
+						</div>
+					</div>
+				</div>
+			</fieldset>								
+		</form>
+	</div> 
+	<!-- 移动导航 -->
+	<div class="site-tree-mobile"><i class="layui-icon">&#xe602;</i></div>
+	<div class="site-mobile-shade"></div>
+	<script type="text/javascript" src="./layui/layui.all.js"></script>
+	<script type="text/javascript" src="js/systemcfg.js"></script>
+</body>
+</html>

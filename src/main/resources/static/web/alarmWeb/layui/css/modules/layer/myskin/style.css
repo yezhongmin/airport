@@ -1,0 +1,10 @@
+body .layer-ext-myskin{
+	 background-color: rgba(0,0,0,0.5);
+}
+body .layer-ext-myskin .layui-layer-title{
+	font-size: 16px;
+	font-weight: bold; 
+	text-align: center;
+	padding: 0px;
+}
+body .layer-ext-myskin .layui-layer-content{}

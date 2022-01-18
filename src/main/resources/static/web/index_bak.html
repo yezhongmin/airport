@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="dhWebSdk/wfs.js" ></script>
+    <script type="text/javascript" src="dhWebSdk/dhsdk.min.js"></script>
+</head>
+<body>
+    <video id="dhVideo" style="width:1280px;height:720px;background-color: black;"></video>
+    <button onclick="Control.dhLogin('shilian', '123456', '36.133.78.3')">登录</button>
+    <button onclick="Control.playRT()">打开视频监控</button>
+    <button onclick="Control.stopRT()">关闭视频监控</button>
+    <button onclick="Control.playDeviceAudio()">打开设备音频</button>
+    <button onclick="Control.startTalk()">打开对讲</button>
+</body>
+<script>
+    var Control = {
+        "dhWeb" : "",
+        "loginHandle": "",
+        "init" : function () {
+            Control.initDhWeb();
+        },
+        "initDhWeb" : function () {
+            Control.dhWeb = new DHAlarmWeb();
+            Control.dhWeb.onLogin = function(message){
+                Control.loginHandle = message.params.loginHandle;
+            };
+
+            Control.dhWeb.onPlayRT = function(data){
+                if(data.error != "success"){
+                    alert("播放失败");
+                }
+            };
+        },
+        "dhLogin" : function (username, password, serverAddr) {
+           /* 参数：username    表示登录账号
+            password    表示登录密码
+            serverAddr   表示服务器ip地址*/
+            Control.dhWeb.login(username, password, serverAddr);
+        },
+        "playRT" : function (deviceid) {
+            if(Control.loginHandle == ""){
+                alert("尚未登录");
+                return;
+            }
+           // Control.dhWeb.playDeviceAudio("984531");
+            Control.dhWeb.playRT(
+                document.getElementById("dhVideo"),
+                "984531",
+                Control.loginHandle,
+                true
+            );
+        },
+        "stopRT": function (deviceid) {
+            if(Control.loginHandle == ""){
+                alert("尚未登录");
+                return;
+            }
+            Control.dhWeb.stopRT(
+                "984531",
+                Control.loginHandle
+            );
+        },
+        "startTalk": function (deviceid) {
+            Control.dhWeb.startTalk("984531");
+        },
+        "playDeviceAudio" : function (deviceid) {
+            Control.dhWeb.playDeviceAudio("984531");
+        }
+    };
+
+    Control.init();
+</script>
+</html>

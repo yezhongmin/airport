@@ -1,0 +1,359 @@
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #082533;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4c9daf;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#bgimg {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 1920px;
+    height: 1080px;
+    z-Index: -1;
+    background-repeat: no-repeat;
+}
+
+#top {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 1920px;
+    height: 100px;
+}
+
+#top-logo {
+    width: 1920px;
+    height: 81px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url("../image/top-logo.png");
+}
+
+#top-navs0 {
+    width: 443px;
+    height: 43px;
+    position: absolute;
+    top: 40px;
+    left: 130px;
+    background-image: url("../image/top-navs0.png");
+}
+
+#top-navs1 {
+    width: 443px;
+    height: 43px;
+    position: absolute;
+    top: 40px;
+    right: 130px;
+    background-image: url("../image/top-navs1.png");
+}
+
+#left {
+    position: absolute;
+    top: 100px;
+    left: 30px;
+}
+
+#left-item0 {
+    width: 564px;
+    height: 204px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url("../image/left-item0-bg.png");
+}
+
+#left-item1 {
+    width: 564px;
+    height: 204px;
+    position: absolute;
+    top: 220px;
+    left: 0px;
+    background-image: url("../image/left-item1-bg.png");
+}
+
+#left-item2 {
+    width: 564px;
+    height: 494px;
+    position: absolute;
+    top: 440px;
+    left: 0px;
+    background-image: url("../image/left-item2-bg.png");
+}
+
+#middle {
+    position: absolute;
+    top: 100px;
+    left: 600px;
+}
+
+#middle-top-item {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width:732px;
+    height: 760px;
+}
+
+#middle-bottom-item0 {
+    width: 222px;
+    height: 142px;
+    position: absolute;
+    top: 791px;
+    left: 0px;
+    background-image: url("../image/middle-bottom-item-bg.png");
+}
+
+#middle-bottom-item1 {
+    width: 222px;
+    height: 142px;
+    position: absolute;
+    top: 791px;
+    left: 242px;
+    background-image: url("../image/middle-bottom-item-bg.png");
+}
+
+#middle-bottom-item2 {
+    width: 222px;
+    height: 142px;
+    position: absolute;
+    top: 791px;
+    left: 484px;
+    background-image: url("../image/middle-bottom-item-bg.png");
+}
+
+#right {
+    position: absolute;
+    top: 100px;
+    left: 1335px;
+}
+
+#right-item0 {
+    width: 564px;
+    height: 204px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-image: url("../image/left-item0-bg.png");
+}
+
+#right-item1 {
+    width: 564px;
+    height: 204px;
+    position: absolute;
+    top: 220px;
+    left: 0px;
+    background-image: url("../image/left-item1-bg.png");
+}
+
+#right-item2 {
+    width: 564px;
+    height: 494px;
+    position: absolute;
+    top: 440px;
+    left: 0px;
+    background-image: url("../image/left-item2-bg.png");
+}
+
+.item-update {
+    position: absolute;
+    top: 10px;
+    right: 13px;
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+    display: none;
+}
+
+.item-title {
+    position: absolute;
+    top: 22px;
+    left: 23px;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+}
+
+.item-content {
+    position: absolute;
+    top: 68px;
+    left: 23px;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 1);
+}
+
+.tdkey {
+    width: 100px;
+    text-align: right;
+    background-color: #F2F2F2;
+}
+
+.tdvalue {
+    text-align: left;
+    background-color: #FFFFFF;
+}
+
+.right-item0-item {
+    border: 1px solid red;
+    width: 510px;
+    height: 20px;
+    margin-bottom: 20px;
+}
+
+.right-item0-item-title {
+    width: 70px;
+    height: 14px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    text-align: right;
+}
+
+.right-item0-item-w {
+    width: 390px;
+    height: 18px;
+    background: rgba(3, 12, 43, 1);
+    border-radius: 9px;
+    border: 1px solid #10E2FB;
+    position: absolute;
+    top: 3px;
+    left: 80px;
+}
+
+.right-item0-item-n {
+    height: 12px;
+    background: linear-gradient(
+            90deg, rgba(47, 138, 216, 1), rgba(16, 226, 251, 1));
+    border-radius: 6px;
+    position: absolute;
+    top: 7px;
+    left: 83px;
+}
+
+.right-item0-item-num{
+    position: absolute;
+    top: 4px;
+    left: 478px;
+    width: 19px;
+    height: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(16,225,250,1);
+}
+
+.middle-item0-numbox{
+    width: 24px;
+    height: 35px;
+    background: rgba(65,105,225,1);
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    float: left;
+    margin-right: 5px;
+    line-height: 35px;
+}
+
+.middle-item1-numbox{
+    width: 24px;
+    height: 35px;
+    background: rgba(119,136,153,1);
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    float: left;
+    margin-right: 5px;
+    line-height: 35px;
+}
+
+.middle-item2-numbox{
+    width: 24px;
+    height: 35px;
+    background: rgba(208,199,102,1);
+    font-size: 28px;
+    font-weight: 400;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    float: left;
+    margin-right: 5px;
+    line-height: 35px;
+}
+
+.middle-item-unit{
+    height: 25px;
+    font-size: 23px;
+    font-weight: 400;
+    color: rgba(254,254,254,1);
+    float: left;
+}
+
+.device-box{
+    /* transform-style: preserve-3d; */
+    border-radius: 50%;
+    /* animation: idle 20s ease-in-out infinite; */
+    text-align: center;
+    width: 105px;
+    height: 105px;
+    transform: translate(-50%, -50%);
+    float : left;
+    margin-left:10px;
+    margin-bottom:30px;
+}
+
+.device-box a{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 0 0.1em #0cf inset, 0 0 1em #0cf inset;
+    color: currentColor;
+    display: inline-block;
+    text-decoration: none;
+    transition: transform 0.4s linear,  box-shadow 0.15s linear,  margin 0.1s linear,  width 0.1s linear,  height 0.1s linear;
+}
+
+.device-box a .device-num{
+    margin-bottom : 0.5em;
+    margin-top: 0.7em;
+    color: #0EDAFF;
+    font-size: 20px;
+}
+
+.device-box a .device-name{
+    margin-bottom: 38px;
+    margin-top: 37px;
+    color: #fff;
+    font-size: 22px;
+}
+
+#changeUpdateModel {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    z-index: 10000;
+}
+

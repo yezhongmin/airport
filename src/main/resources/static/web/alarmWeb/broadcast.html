@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="./layui/css/layui.css" media="all"/>
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+
+<body class="main">
+	<div class="layui-side">
+		<div class="layui-side-scroll layui-form">
+			<div class="disableBg"></div>
+			<ul class="bcDevice">
+				 <li><input type="checkbox" title="全选" lay-skin="primary" lay-filter="checkAll"></li>
+				<hr>
+			</ul>
+		</div>
+	</div>
+	<div class="layui-body layui-form ">
+		<div class="operateContent">
+			<div class="layui-form-item">
+				<input type="radio" name="bcType" title="麦克风广播" value="1" lay-filter="bcType" checked>
+				<input type="radio" name="bcType" title="文件广播" value="2" lay-filter="bcType">
+			</div>
+			<div class="layui-form-item layui-row" >
+				<input name="file" type="file" accept="audio/x-mpeg,audio/x-wav,audio/*" class="layui-input audioFile" disabled/>
+				<input type="button" class="layui-btn layui-btn-sm layui-btn-disabled audition" value="试听">
+				<audio id="audio" style="display: none;"></audio>
+			</div>
+			<div class="opeBtn">
+				<div class="layui-form-item">
+					<input type="button" class="layui-btn startBC" value="开始广播">
+				</div>
+				<div class="layui-form-item">
+					<input type="button" class="layui-btn layui-btn-disabled pauseBC" value="暂停广播">
+				</div>
+				<div class="layui-form-item">
+					<input type="button" class="layui-btn layui-btn-disabled stopBC" value="停止广播">
+				</div>
+			</div>
+			
+		</div>
+	</div>
+
+<script type="text/javascript" src="./layui/layui.all.js"></script>
+<script type="text/javascript" src="js/broadcast.js"></script>
+<style>
+.layui-body{
+	left: calc(60% - 20px);
+	border-left: 1px solid gainsboro;
+}
+.disableBg{
+	width: 100%;
+	height: 0px;
+	position: absolute;
+	z-index: 99;
+	background-color: rgb(0, 0, 0, 0.2);
+}
+.operateContent{
+	margin: 10px;
+}
+.layui-nav{
+	background-color: white;
+}
+.bcDevice li{
+	margin-left: 10px;
+	width: 30px;
+	line-height: 30px;
+}
+.layui-side-scroll{
+	width: calc(100% - 20px);
+}
+.layui-side{
+	width: 60%;
+}
+.opeBtn{
+	text-align: center;
+	margin-top: 20px;
+}
+.audioFile{
+	width: calc(100% - 60px);
+	display: inline-block;
+}
+</style>
+</body>
+</html>

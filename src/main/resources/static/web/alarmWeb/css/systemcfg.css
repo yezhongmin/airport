@@ -1,0 +1,97 @@
+/*顶部*/
+.header{ z-index:2000;background-color:#23262E;}
+.logo{ color: #fff; float: left; line-height:60px; font-size:20px; padding:0 25px; text-align: center; width:150px;}
+.logout{color: #fff; float: right;font-size:16px; padding:0 25px; text-align: center; line-height:60px;}
+
+.layui-tab-title{
+	text-align: center;
+}
+.layui-tab,.layui-tab-content,.layui-show{
+	height: 100%;
+}
+form{
+	padding: 10px;
+}
+.tree{
+	float: left;
+	width: 300px;
+	border-right: 1px solid silver;
+	height: 100%;
+	position: fixed;
+	top: 110px;
+	height: calc(100% - 130px);
+	padding-bottom: 10px;
+	left: 0px;
+	overflow: auto;
+}
+.maincontent{
+	height: 100%;
+	margin-left: 320px;
+}
+.layui-form-item{
+	clear: none !important;
+}
+.groupMain{
+	min-width: 300px;
+	max-width: 600px;
+	border: 5px #eee outset;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+.authorizeGroup{
+	margin-bottom: 10px;
+	margin-left: 0;
+	text-align: center;
+}
+.opeBtn,.authorizeDiv {
+	margin: 5px 0px;
+	margin-left: 0px;
+	text-align: center;
+}
+.layui-elem-field{
+	min-width: 300px;
+	max-width: 700px;
+	margin: 0 auto;
+	margin-top: 40px;
+}
+.layui-elem-field legend{
+	font-weight: bold;
+	color: red;
+}
+.layui-field-box span{
+	font-size: 16px;
+	font-weight: 400;
+}
+.count{
+	top: 80px;
+    position: absolute;
+}
+.search{
+	position: fixed;
+	width: 300px;
+	left: 0;
+	z-index: 2000;
+	top: 110px;
+}
+#devicetree{
+	top: 150px;
+	height: calc(100% - 170px)
+}
+.site-tree-mobile{display:none !important;}
+/*响应式样式*/
+@media screen and (max-width:1080px){
+	.site-mobile .site-tree-mobile{display:none !important;}
+}
+@media screen and (max-width: 720px){
+	.count{top: 120px;}
+	.maincontent{margin-left: 0px !important;}
+	.tree{background: white;top: 60px;padding-top: 10px;height: calc(100% - 80px);}
+	#devicetree{top: 90px;height: calc(100% - 120px);}
+	.search{top: 60px;}
+    .layui-tab-content .tree,.search{ left:-340px; }
+	.site-mobile  .tree{ left: 0; z-index:1100; }
+	.site-mobile  .search{ left: 0;}
+	.site-tree-mobile {display: block!important; position: fixed; z-index: 100000; bottom: 15px; left: 15px; width:40px; height:40px; line-height:40px; border-radius: 2px; text-align: center; background-color: rgba(0,0,0,.7); color: #fff;}
+	.site-mobile .site-mobile-shade { content: ''; position: fixed; top: 0; bottom: 0; left: 0; right: 0; background-color: rgba(0,0,0,.8); z-index: 999;}
+	.jstree-contextmenu{z-index: 1101;}
+}
